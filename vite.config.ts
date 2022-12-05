@@ -10,7 +10,7 @@ const variablePath = normalizePath(path.resolve('./src/assets/style/variable.les
 // https://vitejs.dev/config/
 export default defineConfig({
 	server: {
-		port: 5000,
+		port: 5123,
 	},
 	resolve: {
 		alias: {
