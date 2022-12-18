@@ -11,6 +11,11 @@ const variablePath = normalizePath(path.resolve('./src/assets/style/variable.les
 export default defineConfig({
 	server: {
 		port: 5123,
+		proxy: {
+			'/api': {
+				target: 'http://st.mawenqing.net/',
+			}
+		}
 	},
 	resolve: {
 		alias: {
