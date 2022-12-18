@@ -1,19 +1,21 @@
-import React from 'react';
-import { createBrowserRouter, Link } from 'react-router-dom';
+import React, { lazy } from 'react';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+
+const Home = lazy(async () => await import('@/pages/home'));
+const Login = lazy(async () => await import('@/pages/login'));
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: (
-            <div>
-                <h1>Hello World</h1>
-                <Link to="about">About Us</Link>
-            </div>
-        )
+        element: <Navigate to='/st' />
     },
     {
-        path: 'about',
-        element: <div>About</div>
+        path: 'st',
+        element: <Home />
+    },
+    {
+        path: 'login',
+        element: <Login />
     }
 ]);
 
