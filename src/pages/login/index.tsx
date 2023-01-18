@@ -5,7 +5,8 @@ import styles from './index.module.less';
 const Login: FC = () => {
 
     const handleLogin = async () => {
-        const { code, data } = await USER_LOGIN(null);
+        // const { code, data } = await USER_LOGIN(null);
+        window.location.href = 'http://st.mawenqing.net/api/user/login';
     };
 
     return (

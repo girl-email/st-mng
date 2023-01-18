@@ -7,7 +7,7 @@ const Login = lazy(async () => await import('@/pages/login'));
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Navigate to='/st' />
+        element: <Navigate to='/login' />
     },
     {
         path: 'st',

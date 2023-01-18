@@ -13,7 +13,7 @@ export default defineConfig({
 		port: 5123,
 		proxy: {
 			'/api': {
-				target: 'http://st.mawenqing.net/',
+				target: 'http://st.mawenqing.net',
 			}
 		}
 	},
