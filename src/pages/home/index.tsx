@@ -1,12 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
+import { Outlet } from 'react-router';
+import { useNavigate } from 'react-router';
 import styles from './index.module.less';
 
 const items: MenuProps['items'] = [
     {
         label: '首页',
-        key: 'home'
+        key: 'home',
     },
     {
         label: '项目',
@@ -15,12 +17,22 @@ const items: MenuProps['items'] = [
 ];
 
 const Home: FC = () => {
+    const navigate = useNavigate();
+    const [current, setCurrent] = useState<string>('home');
+
+    const handleMenuClick: MenuProps['onClick'] = (e) => {
+        setCurrent(e.key);
+        navigate(`/${e.key}`);
+    };
 
     return (
         <div className={styles.home_main}>
             <div className={styles.top_menu}>
                 <div className={styles.st_logo}>闪调</div>
-                <Menu mode="horizontal" items={items} />
+                <Menu onClick={handleMenuClick} selectedKeys={[current]} mode="horizontal" items={items} />
+            </div>
+            <div className={styles.page_view}>
+                <Outlet />
             </div>
         </div>
     );
