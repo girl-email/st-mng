@@ -21,7 +21,7 @@ const TopNav: FC = () => {
 
     const handleMenuClick: MenuProps['onClick'] = (e) => {
         setCurrent(e.key);
-        navigate(`/${e.key}`);
+        navigate(`/st/${e.key}`);
     };
 
     return (
