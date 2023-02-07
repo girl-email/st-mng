@@ -17,7 +17,7 @@ const items: MenuProps['items'] = [
 
 const TopNav: FC = () => {
     const navigate = useNavigate();
-    const [current, setCurrent] = useState<string>('home');
+    const [current, setCurrent] = useState<string>('project');
 
     const handleMenuClick: MenuProps['onClick'] = (e) => {
         setCurrent(e.key);

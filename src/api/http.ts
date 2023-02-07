@@ -2,6 +2,7 @@ import axios from 'axios';
 import { checkUrl } from '@/utils/utils';
 import { message } from 'antd';
 import { ResType } from '@/types/http';
+import router from '@/router/index';
 
 /*
  * 基础配置
@@ -59,9 +60,22 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   async function (res) {
     if (res.status === 200) {
+      switch(res.data.code) {
+        case 0:
+          message.error(res.data.message);
+          break;
+        case 1:
+          break;
+        case 401:
+          message.warning('未登录');
+          // router.navigate('/login');
+          break;
+        default:
+          break;
+      }
       return await Promise.resolve(res.data);
     } else {
-      return await Promise.reject(res);
+      return await Promise.reject(res.data);
     }
   },
   function (res) {
@@ -92,7 +106,7 @@ instance.interceptors.response.use(
  * 在对象，['params']:data ===== params:data 这样理解
  *
  * */
-export default async <T>(url: string, method: string, data: any): Promise<ResType<T>> => {
+export default async <T>(url: string, method: string, data?: any): Promise<ResType<T>> => {
   return await new Promise((resole) => {
     instance({
       url,

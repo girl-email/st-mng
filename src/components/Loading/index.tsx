@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from 'react';
 import styles from './index.module.less';
 
-const LoadingPage = () => {
+const LoadingPage: FC = () => {
   return (
         <Fragment>
             <main className={styles.loading_main}>

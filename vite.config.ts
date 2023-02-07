@@ -14,6 +14,7 @@ export default defineConfig({
 		proxy: {
 			'/api': {
 				target: 'http://st.mawenqing.net',
+				changeOrigin: true,
 			}
 		}
 	},
