@@ -5,8 +5,6 @@ import react from '@vitejs/plugin-react';
 import viteEslint from 'vite-plugin-eslint';
 import StylelintPlugin from 'vite-plugin-stylelint';
 
-const variablePath = normalizePath(path.resolve('./src/assets/style/variable.less'));
-
 // https://vitejs.dev/config/
 export default defineConfig({
 	server: {
@@ -42,7 +40,7 @@ export default defineConfig({
 		preprocessorOptions: {
 			less: {
 				javascriptEnabled: true,
-				additionalData: `@import "${variablePath}";`
+				additionalData: '@import "@/assets/style/var.less";'
 			},
 		}
 	},

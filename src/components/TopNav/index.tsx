@@ -25,11 +25,9 @@ const TopNav: FC = () => {
     };
 
     return (
-        <div className={styles.home_main}>
-            <div className={styles.top_menu}>
-                <div className={styles.st_logo}>闪调</div>
-                <Menu onClick={handleMenuClick} selectedKeys={[current]} mode="horizontal" items={items} />
-            </div>
+        <div className={styles.top_menu}>
+            <div className={styles.st_logo}>闪调</div>
+            <Menu onClick={handleMenuClick} selectedKeys={[current]} mode="horizontal" items={items} />
         </div>
     );
 };

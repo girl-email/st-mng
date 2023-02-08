@@ -1,30 +1,31 @@
-import React, { FC } from 'react';
-import { USER_LOGIN } from '@/api/api';
-import styles from './index.module.less';
+import React from 'react';
+import LoginForm from './components/LoginForm';
+import SwitchDark from '@/components/SwitchDark';
+import loginLeft from '@/assets/images/login_left.png';
+import logo from '@/assets/images/logo.png';
+import './index.less';
 
-const Login: FC = () => {
-
-    const handleLogin = async () => {
-        // const { code, data } = await USER_LOGIN(null);
-        window.location.href = 'http://st.mawenqing.net/api/user/login';
-    };
-
-    return (
-        <div className={styles.login_main}>
-            <div className={styles.login_left}>
-                <div className={styles.st_logo}>
-                    <span>闪调</span>
-                </div>
-                <div className={styles.login_box}>
-                    <p>欢迎登录闪调系统</p>
-                    <div className={styles.login_method_box}>
-                        <i className="iconfont icon-dingding" onClick={handleLogin}></i>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.login_right}></div>
-        </div>
-    );
+const Login = () => {
+	return (
+		<div className='login-container'>
+			<SwitchDark />
+			<div className='login-box'>
+				<div className='login-left'>
+					<img src={loginLeft} alt='login' />
+				</div>
+				<div className='login-form'>
+					<div className='login-logo'>
+						<img className='login-icon' src={logo} alt='logo' />
+						<span className='logo-text'>fast debug</span>
+					</div>
+					<LoginForm />
+					<div className='login-fast'>
+						<i className='iconfont icon-dingding'></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Login;
