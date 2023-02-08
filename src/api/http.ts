@@ -68,7 +68,7 @@ instance.interceptors.response.use(
           break;
         case 401:
           message.warning('未登录');
-          // router.navigate('/login');
+          router.navigate('/login');
           break;
         default:
           break;
@@ -107,6 +107,10 @@ instance.interceptors.response.use(
  *
  * */
 export default async <T>(url: string, method: string, data?: any): Promise<ResType<T>> => {
+  if(method === 'put' || method === 'delete') {
+    const { id } = data;
+    url += `/${id}`;
+  }
   return await new Promise((resole) => {
     instance({
       url,
