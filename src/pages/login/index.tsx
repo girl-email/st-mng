@@ -16,7 +16,7 @@ const Login = () => {
 				<div className='login-form'>
 					<div className='login-logo'>
 						<img className='login-icon' src={logo} alt='logo' />
-						<span className='logo-text'>fast debug</span>
+						<span className='logo-text'>闪调</span>
 					</div>
 					<LoginForm />
 					<div className='login-fast'>
