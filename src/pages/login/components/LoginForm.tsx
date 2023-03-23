@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { Button, Form, Input, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import { USER_LOGIN } from '@/api/api';
+
+interface LoginForm {
+	mobile: string
+	pwd: string
+}
 
 const LoginForm = () => {
 	const navigate = useNavigate();
@@ -9,12 +15,20 @@ const LoginForm = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 
 	// 登录
-	const onFinish = async (loginForm: any) => {
-		console.log(loginForm);
+	const onFinish = async (loginForm: LoginForm) => {
+		setLoading(true);
+		const { code, data } = await USER_LOGIN(loginForm);
+		if(code === 1) {
+			setLoading(false);
+			message.success('登录成功');
+			localStorage.setItem('ST_USER_DATA', JSON.stringify(data));
+			navigate('/st');
+		}
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
-		console.log('Failed:', errorInfo);
+		setLoading(false);
+		message.success(`登录失败：${errorInfo}`);
 	};
 
 	return (
@@ -28,10 +42,10 @@ const LoginForm = () => {
 			size="large"
 			autoComplete="off"
 		>
-			<Form.Item name="username" rules={[{ required: true, message: '请输入用户名' }]}>
+			<Form.Item name="mobile" rules={[{ required: true, message: '请输入手机号' }]}>
 				<Input placeholder="请输入手机号" prefix={<UserOutlined />} />
 			</Form.Item>
-			<Form.Item name="password" rules={[{ required: true, message: '请输入密码' }]}>
+			<Form.Item name="pwd" rules={[{ required: true, message: '请输入密码' }]}>
 				<Input.Password autoComplete="new-password" placeholder="密码：888888" prefix={<LockOutlined />} />
 			</Form.Item>
 			<Form.Item className="login-btn">

@@ -6,6 +6,11 @@ import logo from '@/assets/images/logo.png';
 import './index.less';
 
 const Login = () => {
+
+	const handleSPA = () => {
+		window.location.href = 'http://st.mawenqing.net/api/user/login';
+	};
+
 	return (
 		<div className='login-container'>
 			<SwitchDark />
@@ -20,7 +25,7 @@ const Login = () => {
 					</div>
 					<LoginForm />
 					<div className='login-fast'>
-						<i className='iconfont icon-dingding'></i>
+						<i className='iconfont icon-dingding' onClick={handleSPA}></i>
 					</div>
 				</div>
 			</div>
