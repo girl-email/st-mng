@@ -19,7 +19,7 @@ const Login = () => {
 				</div>
 				<div className='login-form'>
 					<div className='login-logo'>
-						<img className='login-icon' src="/public/icon.svg" alt='logo' />
+						<img className='login-icon' src="/icon.svg" alt='logo' />
 						<span className='logo-text'>闪调</span>
 					</div>
 					<LoginForm />

@@ -38,7 +38,7 @@ const LeftMenu: FC = () => {
   return (
     <nav className='st_left_nav'>
       <div className='nav_logo'>
-        <img src="/public/icon.svg" alt="" />
+        <img src="/icon.svg" alt="" />
         <span>闪调</span>
       </div>
       <Menu
