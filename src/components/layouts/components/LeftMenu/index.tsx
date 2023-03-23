@@ -1,7 +1,6 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-import { GET_USER_INFO } from '@/api/api';
 import './index.less';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -31,21 +30,10 @@ const items: MenuProps['items'] = [
 ];
 
 const LeftMenu: FC = () => {
-
-  const getUserInfo = async () => {
-    const { code, data } = await GET_USER_INFO();
-    if (code === 1) {
-      localStorage.setItem('ST_USER_DATA', JSON.stringify(data));
-    }
-  };
-
   const onSelect: MenuProps['onSelect'] = (e) => {
     console.log('onSelect ', e);
   };
 
-  useEffect(() => {
-    getUserInfo();
-  }, []);
 
   return (
     <nav className='st_left_nav'>

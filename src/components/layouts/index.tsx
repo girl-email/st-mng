@@ -1,12 +1,27 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Layout } from 'antd';
+import { GET_USER_INFO } from '@/api/api';
 import LeftMenu from './components/LeftMenu';
 import LayoutHeader from './components/LayoutHeader';
 import './index.less';
 
 const LayoutIndex = () => {
 	const { Sider, Content } = Layout;
+
+	useEffect(() => {
+		listeningWindow();
+		if (!localStorage.getItem('ST_USER_DATA')) {
+			getUserInfo();
+		}
+	}, []);
+
+	const getUserInfo = async () => {
+		const { code, data } = await GET_USER_INFO();
+		if (code === 1) {
+			localStorage.setItem('ST_USER_DATA', JSON.stringify(data));
+		}
+	};
 
 	// 监听窗口大小变化
 	const listeningWindow = () => {
@@ -18,10 +33,6 @@ const LayoutIndex = () => {
 			})();
 		};
 	};
-
-	useEffect(() => {
-		listeningWindow();
-	}, []);
 
 	return (
 		<section className="container">
