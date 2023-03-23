@@ -22,9 +22,9 @@ function getItem(
 }
 
 const items: MenuProps['items'] = [
+  { type: 'divider' },
     getItem('实时监控', 'sub1', null),
     getItem('数据大屏', 'sub2', null),
-    // { type: 'divider' },
     getItem('埋点数据', 'sub3', null),
     getItem('线上调试', 'grp', null)
   ];
@@ -45,7 +45,7 @@ const LeftMenu: FC = () => {
                 className='st_left_menu'
                 onClick={onClick}
                 style={{ width: 220 }}
-                defaultSelectedKeys={['1']}
+                defaultSelectedKeys={['sub1']}
                 defaultOpenKeys={['sub1']}
                 mode="inline"
                 items={items}
