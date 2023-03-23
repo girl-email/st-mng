@@ -31,8 +31,8 @@ const items: MenuProps['items'] = [
 
 const LeftMenu: FC = () => {
 
-    const onClick: MenuProps['onClick'] = (e) => {
-        console.log('click ', e);
+    const onSelect: MenuProps['onSelect'] = (e) => {
+        console.log('onSelect ', e);
       };
 
     return (
@@ -43,7 +43,7 @@ const LeftMenu: FC = () => {
             </div>
             <Menu
                 className='st_left_menu'
-                onClick={onClick}
+                onSelect={onSelect}
                 style={{ width: 220 }}
                 defaultSelectedKeys={['sub1']}
                 defaultOpenKeys={['sub1']}
