@@ -17,6 +17,7 @@ interface UserInfoRes {
 const CustomAvatar: FC = () => {
     const navigator = useNavigate();
     const [locUser, setLocUser] = useState<UserInfoRes | null>(null);
+    const [exist, setExist] = useState<boolean>(true);
     const selectList = [
         {
             label: '个人信息',
@@ -31,8 +32,13 @@ const CustomAvatar: FC = () => {
     ];
 
     useEffect(() => {
-        setLocUser(JSON.parse(localStorage.getItem('ST_USER_DATA') || '{}'));
-    }, []);
+        if (!localStorage.getItem('ST_USER_DATA')) {
+			setExist(false);
+		} else {
+            setLocUser(JSON.parse(localStorage.getItem('ST_USER_DATA') || '{}'));
+            setExist(true);
+        }
+    }, [exist]);
 
     const handleSelf = () => {
         console.log('个人信息');
