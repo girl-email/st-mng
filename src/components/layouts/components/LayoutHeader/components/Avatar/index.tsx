@@ -32,10 +32,10 @@ const CustomAvatar: FC = () => {
     ];
 
     useEffect(() => {
-        if (!localStorage.getItem('ST_USER_DATA')) {
+        if (!JSON.parse(localStorage.getItem('ST_USER_DATA')!)) {
 			setExist(false);
 		} else {
-            setLocUser(JSON.parse(localStorage.getItem('ST_USER_DATA') || '{}'));
+            setLocUser(JSON.parse(localStorage.getItem('ST_USER_DATA') || 'null'));
             setExist(true);
         }
     }, [exist]);
