@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
+import { useNavigate } from 'react-router';
 import './index.less';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -23,15 +24,19 @@ function getItem(
 
 const items: MenuProps['items'] = [
   { type: 'divider' },
-  getItem('实时监控', 'sub1', null),
+  getItem('实时监控', '/st/project', null),
   getItem('数据大屏', 'sub2', null),
   getItem('埋点数据', 'sub3', null),
-  getItem('线上调试', 'grp', null)
+  getItem('线上调试', 'grp', null),
+  getItem('项目管理', '/st/mange', null)
 ];
 
 const LeftMenu: FC = () => {
+  const navigate = useNavigate();
+
   const onSelect: MenuProps['onSelect'] = (e) => {
     console.log('onSelect ', e);
+    navigate(`${e.key}`);
   };
 
 
@@ -45,8 +50,8 @@ const LeftMenu: FC = () => {
         className='st_left_menu'
         onSelect={onSelect}
         style={{ width: 220 }}
-        defaultSelectedKeys={['sub1']}
-        defaultOpenKeys={['sub1']}
+        defaultSelectedKeys={['/st/project']}
+        defaultOpenKeys={['/st/project']}
         mode="inline"
         items={items}
       />

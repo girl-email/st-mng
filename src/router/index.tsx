@@ -3,6 +3,8 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 const Layout = lazy(async () => await import('@/components/layouts'));
 const Login = lazy(async () => await import('@/pages/login'));
+const Project = lazy(async () => await import('@/pages/project'));
+const MangeProject = lazy(async () => await import('@/pages/mange'));
 
 const router = createBrowserRouter([
     {
@@ -13,10 +15,18 @@ const router = createBrowserRouter([
         path: 'st',
         element: <Layout />,
         children: [
-            // {
-            //     index: true,
-            //     element: <Layout />
-            // }
+            {
+                index: true,
+                element: <Project />
+            },
+            {
+                path: 'project',
+                element: <Project />
+            },
+            {
+                path: 'mange',
+                element: <MangeProject />
+            }
         ]
     },
     {

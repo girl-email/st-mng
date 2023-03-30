@@ -43,7 +43,7 @@ const LoginForm = () => {
 			autoComplete="off"
 		>
 			<Form.Item name="mobile" rules={[{ required: true, message: '请输入手机号' }]}>
-				<Input placeholder="请输入手机号" prefix={<UserOutlined />} />
+				<Input autoComplete="" placeholder="请输入手机号" prefix={<UserOutlined />} />
 			</Form.Item>
 			<Form.Item name="pwd" rules={[{ required: true, message: '请输入密码' }]}>
 				<Input.Password autoComplete="new-password" placeholder="密码：888888" prefix={<LockOutlined />} />
