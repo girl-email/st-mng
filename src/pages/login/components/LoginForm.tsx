@@ -14,7 +14,6 @@ const LoginForm = () => {
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState<boolean>(false);
 
-	// 登录
 	const onFinish = async (loginForm: LoginForm) => {
 		setLoading(true);
 		const { code, data } = await USER_LOGIN(loginForm);
