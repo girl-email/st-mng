@@ -8,7 +8,7 @@ import LoadingPage from './components/Loading';
 
 function App() {
 	return (
-		<ConfigProvider locale={zhCN}>
+		<ConfigProvider locale={zhCN} theme={{token: {colorPrimary: '#3073ff'}}}>
 			<Suspense fallback={<LoadingPage />}>
 				<RouterProvider router={router} />
 			</Suspense>
